@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
     <ion-card class="Groceries List View">
       <ion-img src="/assets/market.jpg"></ion-img>
       <ion-card-header>
@@ -17,53 +17,19 @@
       <ion-list-header>
         <ion-label>Items to get: </ion-label>
       </ion-list-header>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let item of items; let i = index">
       <ion-item>
-        <ion-label>Milk</ion-label>
-        <p>1</p>
+        <ion-label>{{item.name}}</ion-label>
+        <p>{{item.quantity}}</p>
       </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-      </ion-item-options>
       <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-        <ion-item-sliding>
-      <ion-item>
-        <ion-label>Eggs</ion-label>
-        <p>dozen</p>
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-      </ion-item-options>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-        <ion-item-sliding>
-      <ion-item>
-        <ion-label>Orange Juice</ion-label>
-        <p>1</p>
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-      </ion-item-options>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Delete</ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-        <ion-item-sliding>
-      <ion-item>
-        <ion-label>Avacodo</ion-label>
-        <p>3</p>
-      </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-      </ion-item-options>
-      <ion-item-options side="end">
-        <ion-item-option (click)="unread(item)">Delete</ion-item-option>
+        <ion-item-option (click)="removeItem(item, i)">Delete</ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
 </ion-list>
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addItem()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
